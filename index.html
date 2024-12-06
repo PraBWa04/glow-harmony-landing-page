@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Glow Harmony - Premium Lighting Solutions</title>
+    <title>Glow Harmony - Новорічне освітлення</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -16,11 +16,9 @@
       <div class="container">
         <a href="#" class="logo">Glow Harmony</a>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#products">Продукція</a></li>
+          <li><a href="#testimonials">Відгуки</a></li>
         </ul>
         <button class="nav-toggle" aria-label="Toggle navigation">
           <span class="hamburger"></span>
@@ -29,47 +27,121 @@
     </nav>
 
     <!-- Hero секція -->
-    <header class="hero">
+    <header
+      class="hero"
+      style="
+        background: url('assets/images/background.jpg') no-repeat center
+          center/cover;
+      "
+    >
       <div class="container">
-        <h1>Illuminate Your World with Glow Harmony</h1>
-        <p>Premium lighting solutions designed for your style and comfort.</p>
-        <a href="#products" class="btn">Explore Products</a>
+        <h1>Сяйво Гармонії</h1>
+        <p>Додайте магію новорічного освітлення у ваш дім!</p>
       </div>
     </header>
 
-    <!-- Про нас -->
-    <section id="about" class="about">
+    <!-- Секція з трьома картками -->
+    <section class="card-section">
       <div class="container">
-        <h2>About Us</h2>
-        <p>
-          Glow Harmony combines elegance, quality, and innovation to bring you
-          the best lighting solutions.
-        </p>
+        <h2 class="section-heading">Наша продукція</h2>
+        <div class="card-grid">
+          <div class="card">
+            <img src="assets/images/lamp-1.jpg" alt="Лампа 1" />
+            <h3>Елегантна лампа</h3>
+            <p>Додайте теплий акцент у ваш дім.</p>
+          </div>
+          <div class="card">
+            <img src="assets/images/lamp-2.jpg" alt="Лампа 2" />
+            <h3>Стильна лампа</h3>
+            <p>Ідеальний вибір для сучасного інтер’єру.</p>
+          </div>
+          <div class="card">
+            <img src="assets/images/lamp-3.jpg" alt="Лампа 3" />
+            <h3>Модерна лампа</h3>
+            <p>Комфорт і естетика в кожному промені.</p>
+          </div>
+          <div class="card">
+            <img src="assets/images/lamp-4.jpg" alt="Лампа 4" />
+            <h3>Романтична лампа</h3>
+            <p>Чудовий вибір для затишних вечорів.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Продукти -->
-    <section id="products" class="products">
+    <!-- Секція "Фото з описом" -->
+    <section class="description-section">
       <div class="container">
-        <h2>Our Bestsellers</h2>
-        <div class="product-carousel">
-          <div class="product-card">
-            <img src="assets/images/product1.jpg" alt="Elegant Lamp" />
-            <h3>Elegant Lamp</h3>
-            <p>$49.99</p>
-            <button class="btn">Buy Now</button>
+        <div class="description-content">
+          <div class="text">
+            <h2>Лампа з абажуром</h2>
+            <p>
+              Ця лампа створена з використанням якісних матеріалів та сучасного
+              дизайну, що гармонійно поєднує функціональність і стиль.
+            </p>
+            <ul>
+              <li>
+                <strong>Матеріал:</strong> Високоякісний метал і загартоване
+                скло
+              </li>
+              <li><strong>Розміри:</strong> 30 x 15 см</li>
+              <li>
+                <strong>Джерело світла:</strong> LED (енергозберігаюча
+                технологія)
+              </li>
+              <li><strong>Кольори:</strong> Теплий білий, холодний білий</li>
+              <li>
+                <strong>Особливості:</strong> Стійкість до механічних пошкоджень
+              </li>
+              <li><strong>Ціна:</strong> 2100 грн</li>
+            </ul>
+            <button class="btn-buy">Замовити зараз</button>
           </div>
-          <div class="product-card">
-            <img src="assets/images/product2.jpg" alt="Stylish Lamp" />
-            <h3>Stylish Lamp</h3>
-            <p>$59.99</p>
-            <button class="btn">Buy Now</button>
+          <div class="image">
+            <img src="assets/images/lamp-8(1).jpg" alt="Лампа з абажуром" />
           </div>
-          <div class="product-card">
-            <img src="assets/images/product3.jpg" alt="Modern Lamp" />
-            <h3>Modern Lamp</h3>
-            <p>$69.99</p>
-            <button class="btn">Buy Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секція з двома фото -->
+    <!-- Секція "Чому обирають нас" -->
+    <section class="why-us">
+      <div class="container">
+        <h2 class="section-heading">Чому обирають нас</h2>
+        <div class="benefits-grid">
+          <div class="benefit">
+            <img src="assets/images/lamp-5.jpg" alt="Романтична лампа" />
+            <h3>Якість, перевірена часом</h3>
+            <p>
+              Наші лампи виготовлені з найкращих матеріалів і відрізняються
+              довговічністю та елегантністю.
+            </p>
+          </div>
+          <div class="benefit">
+            <img src="assets/images/lamp-6.jpg" alt="Ретро лампа" />
+            <h3>Дизайн для кожного дому</h3>
+            <p>
+              Ми пропонуємо унікальні рішення, які пасуватимуть до будь-якого
+              інтер’єру – від сучасного до класичного.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секція "Деталі виробів" -->
+    <section class="additional-photos">
+      <div class="container">
+        <h2 class="section-heading">Деталі виробів</h2>
+        <div class="photo-detail-grid">
+          <div class="photo-detail">
+            <img src="assets/images/lamp-6.jpg" alt="Інноваційний дизайн" />
+            <p>Інноваційний дизайн</p>
+          </div>
+          <div class="photo-detail">
+            <img src="assets/images/lamp-7.jpg" alt="Класична форма" />
+            <p>Класична форма</p>
           </div>
         </div>
       </div>
@@ -78,59 +150,22 @@
     <!-- Відгуки -->
     <section id="testimonials" class="testimonials">
       <div class="container">
-        <h2>What Our Customers Say</h2>
+        <h2>Відгуки клієнтів</h2>
         <div class="testimonial-card">
-          <p>
-            "Glow Harmony has completely changed how my home looks. I absolutely
-            love it!"
-          </p>
-          <cite>- John, Interior Designer</cite>
+          <p>"Ці лампи створюють справжню казку у вашому домі!"</p>
+          <cite>- Анна, Київ</cite>
         </div>
         <div class="testimonial-card">
-          <p>
-            "Exceptional quality and design. Their lamps are a piece of art!"
-          </p>
-          <cite>- Sarah, Happy Customer</cite>
+          <p>"Відмінна якість та швидка доставка. Дуже задоволений!"</p>
+          <cite>- Ігор, Львів</cite>
         </div>
-      </div>
-    </section>
-
-    <!-- Контакти -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <form action="https://example.com/submit" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
       </div>
     </section>
 
     <!-- Футер -->
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024 Glow Harmony. All Rights Reserved.</p>
-        <ul class="social-links">
-          <li>
-            <a href="#"
-              ><img src="assets/icons/facebook.svg" alt="Facebook"
-            /></a>
-          </li>
-          <li>
-            <a href="#"
-              ><img src="assets/icons/instagram.svg" alt="Instagram"
-            /></a>
-          </li>
-          <li>
-            <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter" /></a>
-          </li>
-        </ul>
+        <p>&copy; 2024 Glow Harmony. Усі права захищено.</p>
       </div>
     </footer>
 
