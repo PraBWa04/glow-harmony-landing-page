@@ -1,1 +1,3 @@
-console.log('Hello from script.js');
+document.querySelector(".nav-toggle").addEventListener("click", () => {
+  document.querySelector(".nav-links").classList.toggle("nav-open");
+});
