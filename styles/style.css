@@ -109,18 +109,19 @@ section {
   -moz-background-size: cover;
   background-size: cover;
   position: relative;
-  padding-top: 20rem;
+  padding-top: 10%;
   overflow: hidden;
 }
 
 .hero-text {
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
+  position: relative;
+  right: 35%;
   text-align: left;
   max-width: 500px;
-  margin-left: -25rem;
   color: #ffffff;
+  z-index: 2; /* Щоб текст був поверх інших елементів */
+  padding: 1rem; /* Відступи навколо тексту */
+  border-radius: 10px; /* Закруглення кутів */
 }
 
 .hero-text h1 {
@@ -218,8 +219,8 @@ section {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 500px; /* Фіксуємо висоту картки */
-  height: 100%; /* Вирівнюємо висоту карток */
+  min-height: 500px;
+  height: 100%;
 }
 
 .card img {
