@@ -20,30 +20,17 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 
-document.querySelectorAll(".card").forEach((card) => {
-  observer.observe(card);
+// Застосування Observer до всіх елементів, які потрібно анімувати
+document.querySelectorAll(".card, .photo-detail").forEach((element) => {
+  observer.observe(element);
 });
 
+// Логіка для мобільної навігації
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 
-navToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-});
-
-const photoDetails = document.querySelectorAll(".photo-detail");
-
-const observ = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
-
-photoDetails.forEach((detail) => {
-  observer.observe(detail);
-});
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+}
