@@ -114,6 +114,9 @@ section {
 }
 
 .hero-text {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
   text-align: left;
   max-width: 500px;
   margin-left: -25rem;
@@ -202,6 +205,7 @@ section {
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .card {
@@ -214,12 +218,15 @@ section {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 400px;
+  min-height: 500px; /* Фіксуємо висоту картки */
+  height: 100%; /* Вирівнюємо висоту карток */
 }
 
 .card img {
+  display: block;
+  margin: 0 auto;
   width: 100%;
-  height: auto;
+  height: 350px;
   object-fit: cover;
   -webkit-object-fit: cover;
   border-radius: 8px;
@@ -235,7 +242,7 @@ section {
 .card p {
   color: #666;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
 
   padding: 0 1rem 1rem;
@@ -344,10 +351,10 @@ section {
 
 .btn-buy {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   background: #f4a261;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 600;
   border: none;
   border-radius: 5px;

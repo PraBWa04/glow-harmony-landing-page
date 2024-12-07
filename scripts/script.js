@@ -33,8 +33,8 @@ navToggle.addEventListener("click", () => {
   navLinks.classList.toggle("open");
 });
 
-navLinks.querySelectorAll("a").forEach((link) =>
-  link.addEventListener("click", () => {
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
     navLinks.classList.remove("open");
-  })
-);
+  }
+});
