@@ -270,7 +270,7 @@ section {
   font-weight: bold;
   border-radius: 10px;
   text-decoration: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -491,6 +491,8 @@ section {
 }
 
 .photo-grid .photo img {
+  display: block;
+  margin: 0 auto;
   width: 100%;
   max-width: 300px;
   height: auto;
@@ -940,46 +942,70 @@ section {
   }
 }
 
+/* Адаптивність для мобільних пристроїв */
 @media (max-width: 480px) {
-  /* Центрування тексту в Hero секції */
+  /* Hero секція */
   .hero {
     flex-direction: column;
-    padding: 1rem;
-    text-align: center;
-    height: auto;
+    justify-content: flex-end; /* Текст внизу */
+    text-align: left;
+    padding: 2rem 1rem;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
   }
 
   .hero-text {
-    margin-left: 0;
-    max-width: 100%;
+    margin: 0 1rem 1rem; /* Відступи для тексту */
+    max-width: 90%;
+    color: white;
   }
 
   .hero-text h1 {
-    font-size: 1.4rem;
-    line-height: 1.6;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
   }
 
   .hero-text p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
   }
 
   /* Навігаційна панель */
   .navbar {
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba(0, 0, 0, 0.9); /* Контрастний фон */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
   .navbar .nav-links {
     display: none;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     padding: 1rem;
     position: absolute;
     top: 100%;
     right: 0;
     left: 0;
     z-index: 100;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 10px 10px;
   }
 
   .navbar .nav-links.open {
@@ -988,39 +1014,102 @@ section {
 
   .navbar .nav-toggle {
     display: block;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #fff;
-    background: none;
-    border: none;
     cursor: pointer;
   }
 
   .navbar .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.8rem 0;
+    color: #fff;
   }
 
   /* Картки продукції */
   .card-grid {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .card img {
-    height: 150px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
   }
 
   .card h3 {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 
   .card p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   /* Кнопка замовлення */
   .order-btn {
-    font-size: 0.9rem;
-    padding: 0.6rem 1rem;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #e76f51, #ff7e5f);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 1.5rem auto;
+    display: inline-block;
+  }
+
+  .order-btn:hover {
+    background: linear-gradient(90deg, #d65c45, #ff7043);
+    transform: scale(1.1);
+  }
+
+  /* Фотографії */
+  .photo-grid .photo img,
+  .photo-detail img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Відгуки */
+  .testimonials h2 {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-card p {
+    font-size: 1.2rem;
+  }
+
+  .testimonial-card cite {
+    font-size: 1rem;
+  }
+}
+
+/* Адаптивність для великих телефонів */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.4rem;
+  }
+
+  .order-btn {
+    font-size: 1.6rem;
+    padding: 1rem 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-btn {
+    font-size: 1.6rem;
+    padding: 1.2rem 2.5rem;
   }
 }
