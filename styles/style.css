@@ -104,10 +104,9 @@ section {
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
-  background: url("../assets/images/background.jpg") no-repeat center/cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
+  background: url("../assets/images/background.jpg") no-repeat center center;
+  background-size: cover; /* Забезпечує повне покриття фоном */
+  background-attachment: scroll; /* Для мобільних пристроїв */
   position: relative;
   padding-top: 10%;
   overflow: hidden;
@@ -119,9 +118,9 @@ section {
   text-align: left;
   max-width: 500px;
   color: #ffffff;
-  z-index: 2; /* Щоб текст був поверх інших елементів */
-  padding: 1rem; /* Відступи навколо тексту */
-  border-radius: 10px; /* Закруглення кутів */
+  z-index: 2;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .hero-text h1 {
@@ -251,7 +250,7 @@ section {
 
 .card:hover {
   transform: scale(1.05);
-  -webkit-transform: scale(1.05); /* Safari */
+  -webkit-transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -594,7 +593,7 @@ section {
   padding: 4rem 2rem;
   border-radius: 10px;
   text-align: center;
-  -webkit-backdrop-filter: blur(10px); /* Safari */
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -734,7 +733,8 @@ section {
     justify-content: center;
     text-align: center;
     padding: 2rem 1rem;
-    height: auto;
+    height: 100vh;
+    background-position: center top;
     background-size: cover;
   }
 
@@ -955,7 +955,7 @@ section {
   /* Hero секція */
   .hero {
     flex-direction: column;
-    justify-content: flex-end; /* Текст внизу */
+    justify-content: flex-end;
     text-align: left;
     padding: 2rem 1rem;
     height: 100vh;
@@ -964,7 +964,7 @@ section {
   }
 
   .hero-text {
-    margin: 0 1rem 1rem; /* Відступи для тексту */
+    margin: 0 1rem 1rem;
     max-width: 90%;
     color: white;
   }
@@ -997,7 +997,7 @@ section {
   /* Навігаційна панель */
   .navbar {
     padding: 0.8rem 1rem;
-    background: rgba(0, 0, 0, 0.9); /* Контрастний фон */
+    background: rgba(0, 0, 0, 0.9);
     position: sticky;
     top: 0;
     z-index: 1000;
