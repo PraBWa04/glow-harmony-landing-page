@@ -1,6 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -13,6 +13,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .container {
@@ -33,16 +37,101 @@ section {
 }
 
 /* Навігація */
+
+/* Загальні стилі для бургер-меню */
+.nav-toggle {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.nav-toggle.open + .nav-links {
+  display: flex;
+}
+
+.hamburger {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  background-color: #fff;
+}
+
+.hamburger {
+  position: relative;
+  width: 30px;
+  height: 3px;
+  transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.hamburger::before {
+  top: -10px;
+}
+
+.hamburger::after {
+  top: 10px;
+}
+
+.nav-toggle.open .hamburger {
+  background: transparent;
+}
+
+.nav-toggle.open .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.nav-toggle.open .hamburger::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
 .navbar {
   background: linear-gradient(90deg, #29211a, #ff7e5f, #29211a);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
   color: white;
   padding: 1rem 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .navbar.scrolled {
@@ -72,79 +161,76 @@ section {
   gap: 1.5rem;
 }
 
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 2rem;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+}
+
+.nav-links.open {
+  right: 0;
+}
+
 .nav-links a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #f4f4f4;
-  text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar .nav-links a {
-  color: #f4f4f4;
+  color: #fff;
   text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem;
 }
 
 .navbar .nav-links a:hover {
-  transform: scale(1.1);
-}
-
-.navbar .nav-toggle {
-  display: none;
-}
-
-.hero {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100vh;
-  background: url("../assets/images/background.jpg") no-repeat center center;
-  background-size: cover; /* Забезпечує повне покриття фоном */
-  background-attachment: scroll; /* Для мобільних пристроїв */
-  position: relative;
-  padding-top: 10%;
-  overflow: hidden;
+  color: #f4a261;
 }
 
 .hero-text {
   position: relative;
-  right: 35%;
-  text-align: left;
-  max-width: 500px;
-  color: #ffffff;
   z-index: 2;
-  padding: 1rem;
-  border-radius: 10px;
+  color: white;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero {
+  display: flex;
+  justify-content: center; /* Центруємо текст */
+  align-items: center; /* Центруємо текст вертикально */
+  height: 100vh; /* Висота секції 100% від висоти вікна */
+  background: url("../assets/images/background.jpg") center / cover no-repeat;
+  position: relative;
 }
 
 .hero-text h1 {
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  margin-bottom: 1rem;
-}
-
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero h1 {
   font-size: 3rem;
-  line-height: 1.2;
-  color: #f4a261;
+  margin-bottom: 1rem;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
-.hero p {
+.hero-text p {
   font-size: 1.5rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  margin-bottom: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .hero h1,
@@ -157,14 +243,12 @@ section {
 .hero h1 {
   font-size: 4rem;
   color: #f4a261;
-  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
   margin-bottom: 1rem;
 }
 
 .hero p {
   font-size: 1.8rem;
   color: #ffffff;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
   margin-bottom: 2rem;
 }
 
@@ -175,20 +259,20 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .hero .container {
   max-width: 800px;
-  margin: 0 auto;
   text-align: left;
   position: relative;
   padding: 20px;
+  display: flex;
+  justify-content: left;
 }
 
 .card-section {
-  background: url("../assets/images/lights.jpg") no-repeat center/cover;
   background-attachment: fixed;
   color: white;
 }
@@ -200,58 +284,60 @@ section {
   margin-bottom: 2rem;
 }
 
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  align-items: flex-start;
-}
-
 .card {
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  flex: 1 1 calc(25% - 1.5rem);
-  max-width: 300px;
+  grid-template-rows: auto 1fr auto; /* Компактна сітка */
+  max-width: 280px; /* Максимальна ширина картки */
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 500px;
-  height: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 .card img {
   display: block;
   margin: 0 auto;
   width: 100%;
-  height: 350px;
+  max-height: 250px; /* Зменшена висота зображень */
   object-fit: cover;
-  -webkit-object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .card h3 {
-  font-size: 1.6rem;
+  font-size: 1.2rem; /* Компактний заголовок */
   color: #141414;
-  padding: 1rem;
   text-align: center;
 }
 
 .card p {
   color: #666;
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 1rem; /* Компактний текст */
+  font-weight: normal;
+  margin: 0; /* Вирівнювання тексту */
+}
 
-  padding: 0 1rem 1rem;
+.card p:last-of-type {
+  font-size: 1.6rem; /* Компактна ціна */
+  color: red;
+  font-weight: bold;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Гнучка сітка */
+  gap: 1rem; /* Зменшений проміжок між картками */
 }
 
 .card-section,
@@ -377,12 +463,6 @@ section {
   text-align: center;
 }
 
-.section-heading {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 2rem;
-}
-
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -453,19 +533,13 @@ section {
 }
 
 .section-heading {
-  font-size: 2.5rem;
-  color: #f4a261;
   text-align: center;
-  margin-bottom: 2rem;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
   background: rgba(0, 0, 0, 0.5);
   display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-}
-
-.additional-photos {
-  background: url("../assets/images/lights.jpg") no-repeat center/cover;
+  color: #f4a261;
 }
 
 .additional-photos .section-heading {
@@ -509,9 +583,6 @@ section {
 }
 
 /* Галерея */
-.two-photo-section {
-  background: url("../assets/images/snowflakes-bg.png") repeat center/cover;
-}
 
 .two-photo-section h2 {
   text-align: center;
@@ -618,7 +689,7 @@ section {
 
 .testimonial-card:hover {
   transform: scale(1.05);
-  -webkit-transform: scale(1.05); /* Safari */
+  -webkit-transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -649,8 +720,208 @@ section {
   margin: 0;
 }
 
-/* Адаптивність для планшетів та великих телефонів (max-width: 1024px) */
+@media (min-width: 1441px) {
+  .hero {
+    background-size: contain;
+    background-position: center;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+  .hero p {
+    font-size: 1.3rem;
+  }
+}
+
 @media (max-width: 1024px) {
+  .hero {
+    background-size: contain;
+    background-position: center;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+/* Для пристроїв із шириною до 768px (планшети і мобільні пристрої) */
+@media (max-width: 768px) {
+  /* Навігаційна панель */
+  .navbar .container {
+    flex-wrap: wrap; /* Дозволяємо перенос елементів */
+    padding: 0 1rem;
+  }
+
+  .container {
+    overflow: hidden;
+  }
+  .navbar .logo {
+    font-size: 1.8rem; /* Зменшення розміру логотипу */
+  }
+
+  .navbar .nav-links {
+    align-items: flex-start; /* Вирівнювання зліва */
+    gap: 1rem;
+  }
+
+  .nav-toggle {
+    display: block; /* Показуємо кнопку бургер-меню */
+  }
+
+  .nav-links {
+    width: 100%; /* Займає всю ширину екрана */
+    height: 100%; /* Займає всю висоту екрана */
+    overflow: hidden; /* Прибираємо скрол */
+    padding: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem; /* Збільшуємо текст для читання */
+    margin-bottom: 1rem;
+  }
+
+  .navbar .nav-links a {
+    font-size: 1rem;
+  }
+
+  .navbar .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Hero текст */
+
+  .hero {
+    padding: 1rem;
+    height: auto;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text {
+    font-size: 0.9rem; /* Зменшення загального розміру тексту */
+    padding: 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem; /* Менший розмір заголовка */
+    line-height: 1.4;
+  }
+
+  .hero p {
+    font-size: 0.9rem; /* Менший розмір опису */
+    line-height: 1.5;
+    padding: 0.5rem;
+  }
+
+  /* Картки товарів */
+  .card-grid {
+    flex-direction: column; /* Відображення карток в колонку */
+    gap: 2rem;
+  }
+
+  .card {
+    max-width: 90%; /* Картки займають 90% ширини */
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .card h3 {
+    font-size: 1.6rem;
+  }
+
+  .card p {
+    font-size: 1.4rem;
+  }
+
+  .card p:last-of-type {
+    font-size: 1.6rem;
+  }
+
+  /* Секція "Чому обирають нас" */
+  .benefits-grid {
+    display: flex;
+    flex-direction: column; /* Відображення в колонку */
+    align-items: center; /* Центруємо елементи */
+    gap: 1.5rem; /* Відстань між елементами */
+  }
+
+  .benefit {
+    max-width: 100%; /* Картки займають всю ширину */
+    margin: 0; /* Забираємо зайві відступи */
+  }
+
+  .benefit img {
+    width: 100%; /* Зображення займає всю ширину */
+    height: auto; /* Зберігаємо пропорції */
+    margin-bottom: 1rem; /* Відступ між фото та текстом */
+  }
+
+  .benefit h3 {
+    font-size: 1.6rem; /* Коригуємо розмір заголовка */
+    margin-bottom: 0.5rem; /* Відступ між заголовком і текстом */
+  }
+
+  .benefit p {
+    font-size: 1.4rem; /* Збільшення тексту для читабельності */
+    line-height: 1.5; /* Покращуємо інтерліньяж */
+  }
+}
+
+/* Для пристроїв із шириною до 480px (малі мобільні пристрої) */
+@media (max-width: 480px) {
+  /* Navbar */
+  .navbar .logo {
+    font-size: 1.6rem; /* Ще трохи зменшено для вузьких екранів */
+  }
+
+  .hero h1 {
+    font-size: 1.6rem; /* Заголовок фонового тексту */
+  }
+
+  .hero p {
+    font-size: 0.8rem; /* Зменшення опису */
+  }
+
+  /* Картки товарів */
+  .card-grid,
+  .benefits-grid {
+    gap: 1rem; /* Зменшуємо відстань між елементами */
+  }
+
+  .card h3,
+  .benefit h3 {
+    font-size: 1.4rem; /* Заголовок товару */
+  }
+
+  .card p,
+  .benefit p {
+    font-size: 1.2rem; /* Опис */
+  }
+
+  .card p:last-of-type {
+    font-size: 1.6rem; /* Зменшення ціни */
+  }
+
   .hero-text h1 {
     font-size: 2rem;
   }
@@ -659,465 +930,336 @@ section {
     font-size: 1rem;
   }
 
-  .card-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Products Section */
+  .card h3 {
+    font-size: 1.4rem;
   }
 
-  .card img {
-    height: 150px;
+  .card p {
+    font-size: 1.2rem;
   }
 
-  .navbar .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    background: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    padding: 1rem;
-    border-radius: 0 0 10px 10px;
-  }
-
-  .navbar .nav-toggle {
-    display: block;
-    font-size: 1.5rem;
-    color: white;
-  }
-
-  .photo-detail-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .card p:last-of-type {
+    font-size: 1.4rem;
   }
 }
 
-/* Адаптивність для середніх телефонів (max-width: 768px) */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem;
+@media (min-width: 321px) and (max-width: 376px) {
+  /* Заголовок і текст у Hero Section */
+  .hero h1 {
+    font-size: 1.1rem; /* Заголовок трохи більший, ніж для 320px */
+    line-height: 1.4; /* Трохи збільшуємо міжрядковий інтервал */
+  }
+
+  .hero p {
+    font-size: 0.6rem; /* Більший текст опису */
+    line-height: 1.5; /* Оптимальне розташування тексту */
   }
 
   .hero-text {
-    text-align: center;
+    padding: 0.5rem; /* Відступи для зручного перегляду */
   }
 
-  .order-btn {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card img {
-    height: 120px;
-  }
-
-  .benefits-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .photo-detail-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  /* Центрування тексту в Hero секції */
-  .hero {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem 1rem;
-    height: 100vh;
-    background-position: center top;
-    background-size: cover;
-  }
-
-  .hero-text {
-    margin-left: 0;
-    max-width: 100%;
-    padding: 1rem;
-  }
-
-  .hero-text h1 {
-    font-size: 1.8rem;
-    line-height: 1.4;
-  }
-
-  .hero-text p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  /* Навігаційна панель */
-  .navbar {
-    padding: 0.5rem 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .navbar .nav-links {
-    display: none;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    padding: 1rem;
-    border-radius: 0 0 8px 8px;
+  /* Навігаційна панель (бургер-меню) */
+  .nav-links {
     width: 100%;
-  }
-
-  .navbar .nav-links.open {
-    display: flex;
-  }
-
-  .navbar .nav-toggle {
-    display: block;
-    font-size: 1.5rem;
-    color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .navbar .logo {
-    font-size: 1.8rem;
+    padding: 1.5rem; /* Трохи більші відступи */
   }
 
   .nav-links a {
-    font-size: 1rem;
-    padding: 0.5rem 0;
-    text-align: center;
+    font-size: 1rem; /* Чіткий текст посилань */
   }
 
-  /* Картки продукції */
+  /* Картки товарів */
   .card-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .card {
-    padding: 0.5rem;
+    max-width: 90%; /* Картки трохи більші */
+    height: auto;
   }
 
   .card img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
+    max-height: 180px; /* Збільшення висоти зображень */
     object-fit: cover;
   }
 
   .card h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Заголовок картки */
   }
 
   .card p {
+    font-size: 1.2rem; /* Розмір тексту картки */
+  }
+
+  .card p:last-of-type {
+    font-size: 1.4rem; /* Ціна */
+  }
+
+  /* Секція "Чому обирають нас" */
+  .benefits-grid {
+    gap: 1.5rem;
+  }
+
+  .benefit {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .benefit img {
+    max-height: 180px; /* Більші зображення */
+  }
+
+  .benefit h3 {
+    font-size: 1.3rem; /* Заголовок */
+  }
+
+  .benefit p {
+    font-size: 1rem; /* Текст опису */
+  }
+
+  /* Відгуки */
+  .testimonials h2 {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-card p {
     font-size: 1rem;
   }
 
-  /* Кнопка замовлення */
-  .order-btn {
-    font-size: 1rem;
-    padding: 0.7rem 1.2rem;
-    margin: 1rem auto;
+  .testimonial-card cite {
+    font-size: 0.9rem;
   }
 
-  /* Описові секції */
+  /* Кнопки */
+  .order-btn,
+  .btn-buy {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  /* Футер */
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+
+  /* Секція "Особливості ліхтарів" */
   .description-content {
     flex-direction: column;
-    gap: 1rem;
-    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
   }
 
-  .description-content .image img {
-    max-width: 100%;
-    height: auto;
+  .description-content .text {
+    padding: 1rem;
   }
 
   .description-content h2 {
     font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
 
-  .description-content p,
+  .description-content p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .description-content ul {
+    padding: 0;
+    list-style-position: inside;
+  }
+
   .description-content ul li {
     font-size: 1rem;
+    margin-bottom: 0.7rem;
   }
 
-  .btn-buy {
+  .description-content ul li strong {
+    color: #f4a261;
+  }
+
+  .description-content .btn-buy {
     font-size: 1rem;
-    padding: 0.7rem 1.5rem;
+    padding: 0.6rem 1rem;
   }
 
-  /* Відгуки */
-  .testimonials h2 {
-    font-size: 1.8rem;
-  }
-
-  .testimonial-card {
-    padding: 1rem;
-  }
-
-  .testimonial-card p {
-    font-size: 1rem;
-  }
-
-  .testimonial-card cite {
-    font-size: 0.9rem;
-  }
-
-  /* Секція з деталями */
-  .photo-detail-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .photo-detail img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .photo-detail h3 {
-    font-size: 1.5rem;
-  }
-
-  .photo-detail p {
-    font-size: 1rem;
-  }
-}
-
-/* Адаптивність для надмалих телефонів (max-width: 360px) */
-@media (max-width: 360px) {
-  .hero-text h1 {
-    font-size: 1.4rem;
-  }
-
-  .hero-text p {
-    font-size: 0.8rem;
-  }
-
-  .order-btn {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
-  }
-
-  .testimonial-card {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero p {
-    font-size: 0.9rem;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.2rem;
-  }
-
-  .hero p {
-    font-size: 0.8rem;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: 0.5rem;
-  }
-
-  .testimonial-card {
-    padding: 0.8rem;
-  }
-}
-
-/* Адаптивність для мобільних пристроїв */
-@media (max-width: 480px) {
-  /* Hero секція */
-  .hero {
-    flex-direction: column;
-    justify-content: flex-end;
-    text-align: left;
-    padding: 2rem 1rem;
-    height: 100vh;
-    background-size: cover;
-    position: relative;
-  }
-
-  .hero-text {
-    margin: 0 1rem 1rem;
-    max-width: 90%;
-    color: white;
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-  }
-
-  .hero-text p {
-    font-size: 1.2rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  }
-
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: -1;
-  }
-
-  /* Навігаційна панель */
-  .navbar {
-    padding: 0.8rem 1rem;
-    background: rgba(0, 0, 0, 0.9);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .navbar .nav-links {
-    display: none;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.9);
-    padding: 1rem;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    z-index: 100;
-    border-radius: 0 0 10px 10px;
-  }
-
-  .navbar .nav-links.open {
-    display: flex;
-  }
-
-  .navbar .nav-toggle {
-    display: block;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  .navbar .logo {
-    font-size: 2rem;
-  }
-
-  .nav-links a {
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 0.8rem 0;
-    color: #fff;
-  }
-
-  /* Картки продукції */
-  .card-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+  .photo-grid .container {
+    grid-template-columns: 1fr; /* Один стовпець для зображень */
     gap: 1.5rem;
   }
 
-  .card img {
-    width: 100%;
+  .photo-grid .photo img {
+    max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Для дуже малих екранів (до 320px) */
+@media (max-width: 320px) {
+  /* Заголовок і текст у Hero Section */
+  .hero h1 {
+    font-size: 1.2rem; /* Зменшуємо розмір заголовка */
+    line-height: 1.3; /* Зменшуємо відстань між рядками */
+  }
+
+  .hero p {
+    font-size: 0.6rem; /* Зменшуємо текст опису */
+    line-height: 1.2; /* Щільніше розташування тексту */
+  }
+
+  .hero-text {
+    padding: 0.2rem; /* Зменшуємо внутрішній відступ */
+  }
+
+  /* Навігаційна панель (бургер-меню) */
+  .nav-links {
+    width: 100%; /* Повна ширина */
+    padding: 1rem; /* Менші відступи */
+  }
+
+  .nav-links a {
+    font-size: 0.9rem; /* Менший текст для посилань */
+  }
+
+  /* Картки товарів */
+  .card-grid {
+    flex-direction: column; /* Відображення карток в колонку */
+    gap: 1rem;
+  }
+
+  .card {
+    max-width: 95%; /* Картки займають майже всю ширину */
+    height: auto;
+  }
+
+  .card img {
+    height: auto; /* Зображення адаптуються пропорційно */
+    max-height: 150px; /* Обмеження висоти зображень */
   }
 
   .card h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Заголовок товару */
   }
 
   .card p {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Зменшений розмір тексту */
   }
 
-  /* Кнопка замовлення */
-  .order-btn {
-    font-size: 1.4rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(90deg, #e76f51, #ff7e5f);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    margin: 1.5rem auto;
-    display: inline-block;
+  .card p:last-of-type {
+    font-size: 1.2rem; /* Зменшений розмір ціни */
   }
 
-  .order-btn:hover {
-    background: linear-gradient(90deg, #d65c45, #ff7043);
-    transform: scale(1.1);
+  /* Секція "Чому обирають нас" */
+  .benefits-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  /* Фотографії */
-  .photo-grid .photo img,
-  .photo-detail img {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  .benefit {
+    max-width: 95%; /* Займають майже всю ширину */
+  }
+
+  .benefit img {
+    max-height: 150px; /* Обмеження висоти зображення */
+  }
+
+  .benefit h3 {
+    font-size: 1.2rem; /* Зменшення тексту заголовка */
+  }
+
+  .benefit p {
+    font-size: 1rem; /* Зменшення тексту опису */
   }
 
   /* Відгуки */
   .testimonials h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Заголовок секції */
   }
 
   .testimonial-card p {
-    font-size: 1.2rem;
+    font-size: 0.9rem; /* Зменшений текст відгуків */
   }
 
   .testimonial-card cite {
-    font-size: 1rem;
-  }
-}
-
-/* Адаптивність для великих телефонів */
-@media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 2.5rem;
+    font-size: 0.8rem; /* Зменшений текст автора */
   }
 
-  .hero-text p {
-    font-size: 1.4rem;
+  /* Кнопки */
+  .order-btn,
+  .btn-buy {
+    font-size: 1rem; /* Зменшення розміру тексту кнопок */
+    padding: 0.5rem 1rem; /* Менші відступи */
   }
 
-  .order-btn {
-    font-size: 1.6rem;
-    padding: 1rem 2.5rem;
+  /* Футер */
+  .footer {
+    padding: 1rem 0;
   }
-}
 
-@media (max-width: 480px) {
-  .order-btn {
-    font-size: 1.6rem;
-    padding: 1.2rem 2.5rem;
+  .footer p {
+    font-size: 0.8rem; /* Зменшений текст у футері */
+  }
+
+  .description-content {
+    flex-direction: column; /* Елементи стають вертикально */
+    gap: 1rem; /* Відстань між текстом і зображеннями */
+    padding: 1rem; /* Зменшуємо загальні відступи */
+  }
+
+  .description-content .text {
+    padding: 0.5rem; /* Зменшений внутрішній відступ */
+    text-align: center; /* Центруємо текст */
+  }
+
+  .description-content h2 {
+    font-size: 1.4rem; /* Зменшення заголовка */
+    margin-bottom: 0.5rem;
+  }
+
+  .description-content p {
+    font-size: 0.8rem; /* Зменшення тексту */
+    line-height: 1.3; /* Щільніше розташування рядків */
+    margin-bottom: 1rem;
+  }
+
+  .description-content ul {
+    margin-bottom: 1rem;
+    padding: 0;
+    list-style-position: inside; /* Список всередині текстового блоку */
+  }
+
+  .description-content ul li {
+    font-size: 0.8rem; /* Зменшення тексту пунктів списку */
+    margin-bottom: 0.5rem;
+  }
+
+  .description-content ul li strong {
+    color: #f4a261; /* Виділення ключових слів */
+  }
+
+  .description-content .btn-buy {
+    font-size: 0.9rem; /* Зменшення розміру кнопки */
+    padding: 0.4rem 0.8rem; /* Менші відступи */
+  }
+
+  .photo-grid .container {
+    grid-template-columns: repeat(1, 1fr); /* Один стовпець для зображень */
+    gap: 1rem;
+  }
+
+  .photo-grid .photo img {
+    max-width: 100%; /* Зображення адаптуються до ширини */
+    height: auto; /* Пропорційне масштабування */
+    border-radius: 8px; /* Менші округлені краї */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тонший тіньовий ефект */
   }
 }
