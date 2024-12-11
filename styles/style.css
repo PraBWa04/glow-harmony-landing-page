@@ -5,8 +5,7 @@
 }
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../assets/images/garland.jpg") no-repeat center/cover;
+  background: url("../assets/images/garland.jpg") no-repeat center/cover;
   background-attachment: fixed;
   font-family: "Roboto", sans-serif;
   color: #333;
@@ -964,6 +963,28 @@ section {
 
   .card p:last-of-type {
     font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 377px) and (max-width: 440px) {
+  /* Заголовок і текст у Hero Section */
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  .hero-text {
+    position: relative;
+    margin-top: 60vh;
+    text-align: center;
+  }
+
+  .hero {
+    height: auto;
+    padding-bottom: 2rem;
   }
 }
 
