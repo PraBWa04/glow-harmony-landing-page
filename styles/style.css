@@ -660,52 +660,28 @@ section {
 /* Відгуки */
 .testimonials {
   background: rgba(0, 0, 0, 0.7);
-  color: white;
   padding: 4rem 2rem;
-  border-radius: 10px;
   text-align: center;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  color: white;
 }
 
-.testimonials h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #f4a261;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+.testimonials .swiper {
+  width: 100%;
+  padding: 1rem 0;
 }
 
 .testimonial-card {
-  background: #fff;
-  color: #333;
-  padding: 1.5rem;
-  margin: 1rem auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.testimonial-card img {
+  width: 100%;
   max-width: 600px;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-}
-
-.testimonial-card p {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  font-style: italic;
-  line-height: 1.6;
-}
-
-.testimonial-card cite {
-  display: block;
-  text-align: right;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #f4a261;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Footer */
@@ -720,7 +696,7 @@ section {
   margin: 0;
 }
 
-@media (min-width: 1441px) {
+@media (max-width: 1441px) {
   .hero {
     background-size: contain;
     background-position: center;
@@ -730,6 +706,7 @@ section {
 
   .hero-text {
     font-size: 1rem;
+    top: 90px;
   }
 
   .hero h1 {
@@ -746,6 +723,10 @@ section {
     background-position: center;
     height: auto;
     min-height: 100vh;
+  }
+
+  .hero-text {
+    top: 40px;
   }
 }
 
@@ -894,12 +875,16 @@ section {
     font-size: 1.6rem; /* Ще трохи зменшено для вузьких екранів */
   }
 
+  .hero-text {
+    top: 50px;
+  }
+
   .hero h1 {
     font-size: 1.6rem; /* Заголовок фонового тексту */
   }
 
   .hero p {
-    font-size: 0.8rem; /* Зменшення опису */
+    font-size: 0.7rem; /* Зменшення опису */
   }
 
   /* Картки товарів */
@@ -920,14 +905,6 @@ section {
 
   .card p:last-of-type {
     font-size: 1.6rem; /* Зменшення ціни */
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-
-  .hero-text p {
-    font-size: 1rem;
   }
 
   /* Products Section */
@@ -958,6 +935,7 @@ section {
 
   .hero-text {
     padding: 0.5rem; /* Відступи для зручного перегляду */
+    top: 50px;
   }
 
   /* Навігаційна панель (бургер-меню) */
@@ -1106,7 +1084,7 @@ section {
 @media (max-width: 320px) {
   /* Заголовок і текст у Hero Section */
   .hero h1 {
-    font-size: 1.2rem; /* Зменшуємо розмір заголовка */
+    font-size: 1rem; /* Зменшуємо розмір заголовка */
     line-height: 1.3; /* Зменшуємо відстань між рядками */
   }
 
@@ -1116,6 +1094,7 @@ section {
   }
 
   .hero-text {
+    top: 50px;
     padding: 0.2rem; /* Зменшуємо внутрішній відступ */
   }
 

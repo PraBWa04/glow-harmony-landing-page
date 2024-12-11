@@ -13,6 +13,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <!-- Meta Pixel Code -->
     <script>
       !(function (f, b, e, v, n, t, s) {
@@ -79,8 +85,8 @@
       <div class="container">
         <div class="hero-text">
           <h1>Новорічні новинки 2024!</h1>
-          <p>Даруємо свято за півціни!</p>
           <p>
+            Даруємо свято за півціни!<br />
             Поспішайте! Лише до 31 грудня діє знижка -50% на всі новорічні
             ліхтарики!
           </p>
@@ -110,12 +116,6 @@
             <h3>Музичний ліхтар Санта на санях з підсвіткою та снігом</h3>
             <p><s>2999₴</s></p>
             <p style="color: red">1499₴</p>
-          </div>
-          <div class="card">
-            <img src="assets/images/lamp-10.jpg" alt="Лампа 4" />
-            <h3>Музичний ліхтар карета з підсвіткою та снігом</h3>
-            <p><s>3799₴</s></p>
-            <p style="color: red">1899₴</p>
           </div>
         </div>
       </div>
@@ -239,14 +239,30 @@
     <!-- Відгуки -->
     <section id="testimonials" class="testimonials">
       <div class="container">
-        <h2>Відгуки клієнтів</h2>
-        <div class="testimonial-card">
-          <p>"Ці лампи створюють справжню казку у вашому домі!"</p>
-          <cite>- Анна, Київ</cite>
-        </div>
-        <div class="testimonial-card">
-          <p>"Відмінна якість та швидка доставка. Дуже задоволений!"</p>
-          <cite>- Ігор, Львів</cite>
+        <h2>Галерея</h2>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <!-- Слайди -->
+            <div class="swiper-slide testimonial-card">
+              <img src="assets/images/photo1.jpg" alt="Фото 1" />
+            </div>
+            <div class="swiper-slide testimonial-card">
+              <img src="assets/images/photo2.jpg" alt="Фото 2" />
+            </div>
+            <div class="swiper-slide testimonial-card">
+              <img src="assets/images/photo3.jpg" alt="Фото 3" />
+            </div>
+            <div class="swiper-slide testimonial-card">
+              <img src="assets/images/photo4.jpg" alt="Фото 4" />
+            </div>
+            <div class="swiper-slide testimonial-card">
+              <img src="assets/images/photo5.jpg" alt="Фото 5" />
+            </div>
+          </div>
+          <!-- Навігація -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>
