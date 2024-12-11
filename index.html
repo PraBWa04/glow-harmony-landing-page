@@ -267,6 +267,30 @@
       </div>
     </section>
 
+    <section class="contact-form">
+      <div class="container">
+        <!-- Додаємо фото перед формою -->
+        <img
+          src="assets/images/instrukcja.jpg"
+          alt="Інструкція з замовлення"
+          class="form-image"
+        />
+        <form id="telegram-form">
+          <select name="lamp" required>
+            <option value="" disabled selected>Обрати ліхтарик</option>
+            <option value="Lamp 1">Лампа 1</option>
+            <option value="Lamp 2">Лампа 2</option>
+            <option value="Lamp 3">Лампа 3</option>
+          </select>
+          <input type="text" name="name" placeholder="Ваше ім'я" required />
+          <input type="tel" name="phone" placeholder="Ваш телефон" required />
+          <button type="submit">Замовити зі знижкою</button>
+        </form>
+        <!-- Повідомлення про статус -->
+        <p id="status-message" style="display: none; font-size: 1.2rem"></p>
+      </div>
+    </section>
+
     <!-- Футер -->
     <footer class="footer">
       <div class="container">
