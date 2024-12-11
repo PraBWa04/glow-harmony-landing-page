@@ -727,7 +727,7 @@ section {
   margin: 0 auto 20px;
   max-width: 100%;
   height: auto;
-  border-radius: 10px; /* Додатковий ефект, за бажанням */
+  border-radius: 10px;
 }
 
 /* Footer */
@@ -752,7 +752,7 @@ section {
 
   .hero-text {
     font-size: 1rem;
-    top: 90px;
+    top: 130px;
   }
 
   .hero h1 {
@@ -763,7 +763,7 @@ section {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .hero {
     background-size: contain;
     background-position: center;
@@ -772,7 +772,7 @@ section {
   }
 
   .hero-text {
-    top: 40px;
+    top: -150px;
   }
 }
 
@@ -780,7 +780,7 @@ section {
 @media (max-width: 768px) {
   /* Навігаційна панель */
   .navbar .container {
-    flex-wrap: wrap; /* Дозволяємо перенос елементів */
+    flex-wrap: wrap;
     padding: 0 1rem;
   }
 
@@ -788,27 +788,27 @@ section {
     overflow: hidden;
   }
   .navbar .logo {
-    font-size: 1.8rem; /* Зменшення розміру логотипу */
+    font-size: 1.8rem;
   }
 
   .navbar .nav-links {
-    align-items: flex-start; /* Вирівнювання зліва */
+    align-items: flex-start;
     gap: 1rem;
   }
 
   .nav-toggle {
-    display: block; /* Показуємо кнопку бургер-меню */
+    display: block;
   }
 
   .nav-links {
-    width: 100%; /* Займає всю ширину екрана */
-    height: 100%; /* Займає всю висоту екрана */
-    overflow: hidden; /* Прибираємо скрол */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     padding: 2rem;
   }
 
   .nav-links a {
-    font-size: 1.2rem; /* Збільшуємо текст для читання */
+    font-size: 1.2rem;
     margin-bottom: 1rem;
   }
 
@@ -828,10 +828,15 @@ section {
 
   /* Hero текст */
 
-  .hero {
-    padding: 1rem;
-    height: auto;
+  .hero-text {
+    position: relative;
+    margin-top: 70vh;
     text-align: center;
+    padding: 1rem;
+  }
+
+  .hero {
+    height: auto;
   }
 
   .hero-text h1 {
@@ -844,30 +849,25 @@ section {
     margin-bottom: 1rem;
   }
 
-  .hero-text {
-    font-size: 0.9rem; /* Зменшення загального розміру тексту */
-    padding: 0.5rem;
-  }
-
   .hero h1 {
-    font-size: 1.8rem; /* Менший розмір заголовка */
+    font-size: 1.8rem;
     line-height: 1.4;
   }
 
   .hero p {
-    font-size: 0.9rem; /* Менший розмір опису */
+    font-size: 0.9rem;
     line-height: 1.5;
     padding: 0.5rem;
   }
 
   /* Картки товарів */
   .card-grid {
-    flex-direction: column; /* Відображення карток в колонку */
+    flex-direction: column;
     gap: 2rem;
   }
 
   .card {
-    max-width: 90%; /* Картки займають 90% ширини */
+    max-width: 90%;
     margin: 0 auto;
     height: auto;
   }
@@ -887,30 +887,30 @@ section {
   /* Секція "Чому обирають нас" */
   .benefits-grid {
     display: flex;
-    flex-direction: column; /* Відображення в колонку */
-    align-items: center; /* Центруємо елементи */
-    gap: 1.5rem; /* Відстань між елементами */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
   }
 
   .benefit {
-    max-width: 100%; /* Картки займають всю ширину */
-    margin: 0; /* Забираємо зайві відступи */
+    max-width: 100%;
+    margin: 0;
   }
 
   .benefit img {
-    width: 100%; /* Зображення займає всю ширину */
-    height: auto; /* Зберігаємо пропорції */
-    margin-bottom: 1rem; /* Відступ між фото та текстом */
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
   }
 
   .benefit h3 {
-    font-size: 1.6rem; /* Коригуємо розмір заголовка */
-    margin-bottom: 0.5rem; /* Відступ між заголовком і текстом */
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .benefit p {
-    font-size: 1.4rem; /* Збільшення тексту для читабельності */
-    line-height: 1.5; /* Покращуємо інтерліньяж */
+    font-size: 1.4rem;
+    line-height: 1.5;
   }
 }
 
@@ -918,7 +918,7 @@ section {
 @media (max-width: 480px) {
   /* Navbar */
   .navbar .logo {
-    font-size: 1.6rem; /* Ще трохи зменшено для вузьких екранів */
+    font-size: 1.6rem;
   }
 
   .hero-text {
@@ -926,31 +926,31 @@ section {
   }
 
   .hero h1 {
-    font-size: 1.6rem; /* Заголовок фонового тексту */
+    font-size: 1.6rem;
   }
 
   .hero p {
-    font-size: 0.7rem; /* Зменшення опису */
+    font-size: 0.7rem;
   }
 
   /* Картки товарів */
   .card-grid,
   .benefits-grid {
-    gap: 1rem; /* Зменшуємо відстань між елементами */
+    gap: 1rem;
   }
 
   .card h3,
   .benefit h3 {
-    font-size: 1.4rem; /* Заголовок товару */
+    font-size: 1.4rem;
   }
 
   .card p,
   .benefit p {
-    font-size: 1.2rem; /* Опис */
+    font-size: 1.2rem;
   }
 
   .card p:last-of-type {
-    font-size: 1.6rem; /* Зменшення ціни */
+    font-size: 1.6rem;
   }
 
   /* Products Section */
@@ -970,28 +970,33 @@ section {
 @media (min-width: 321px) and (max-width: 376px) {
   /* Заголовок і текст у Hero Section */
   .hero h1 {
-    font-size: 1.1rem; /* Заголовок трохи більший, ніж для 320px */
-    line-height: 1.4; /* Трохи збільшуємо міжрядковий інтервал */
+    font-size: 1.3em;
+    line-height: 1.4;
   }
 
   .hero p {
-    font-size: 0.6rem; /* Більший текст опису */
-    line-height: 1.5; /* Оптимальне розташування тексту */
+    font-size: 0.7rem;
+    line-height: 1.5;
+  }
+  .hero-text {
+    position: relative;
+    margin-top: 60vh;
+    text-align: center;
   }
 
-  .hero-text {
-    padding: 0.5rem; /* Відступи для зручного перегляду */
-    top: 50px;
+  .hero {
+    height: auto;
+    padding-bottom: 2rem;
   }
 
   /* Навігаційна панель (бургер-меню) */
   .nav-links {
     width: 100%;
-    padding: 1.5rem; /* Трохи більші відступи */
+    padding: 1.5rem;
   }
 
   .nav-links a {
-    font-size: 1rem; /* Чіткий текст посилань */
+    font-size: 1rem;
   }
 
   /* Картки товарів */
@@ -1001,25 +1006,25 @@ section {
   }
 
   .card {
-    max-width: 90%; /* Картки трохи більші */
+    max-width: 90%;
     height: auto;
   }
 
   .card img {
-    max-height: 180px; /* Збільшення висоти зображень */
+    max-height: 180px;
     object-fit: cover;
   }
 
   .card h3 {
-    font-size: 1.4rem; /* Заголовок картки */
+    font-size: 1.4rem;
   }
 
   .card p {
-    font-size: 1.2rem; /* Розмір тексту картки */
+    font-size: 1.2rem;
   }
 
   .card p:last-of-type {
-    font-size: 1.4rem; /* Ціна */
+    font-size: 1.4rem;
   }
 
   /* Секція "Чому обирають нас" */
@@ -1033,15 +1038,15 @@ section {
   }
 
   .benefit img {
-    max-height: 180px; /* Більші зображення */
+    max-height: 180px;
   }
 
   .benefit h3 {
-    font-size: 1.3rem; /* Заголовок */
+    font-size: 1.3rem;
   }
 
   .benefit p {
-    font-size: 1rem; /* Текст опису */
+    font-size: 1rem;
   }
 
   /* Відгуки */
@@ -1114,7 +1119,7 @@ section {
   }
 
   .photo-grid .container {
-    grid-template-columns: 1fr; /* Один стовпець для зображень */
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
@@ -1130,56 +1135,59 @@ section {
 @media (max-width: 320px) {
   /* Заголовок і текст у Hero Section */
   .hero h1 {
-    font-size: 1rem; /* Зменшуємо розмір заголовка */
-    line-height: 1.3; /* Зменшуємо відстань між рядками */
+    font-size: 1.2rem;
   }
 
   .hero p {
-    font-size: 0.6rem; /* Зменшуємо текст опису */
-    line-height: 1.2; /* Щільніше розташування тексту */
+    font-size: 0.7rem;
   }
 
   .hero-text {
-    top: 50px;
-    padding: 0.2rem; /* Зменшуємо внутрішній відступ */
+    position: relative;
+    margin-top: 51vh;
+    text-align: center;
+  }
+
+  .hero {
+    height: auto;
   }
 
   /* Навігаційна панель (бургер-меню) */
   .nav-links {
-    width: 100%; /* Повна ширина */
-    padding: 1rem; /* Менші відступи */
+    width: 100%;
+    padding: 1rem;
   }
 
   .nav-links a {
-    font-size: 0.9rem; /* Менший текст для посилань */
+    font-size: 0.9rem;
   }
 
   /* Картки товарів */
   .card-grid {
-    flex-direction: column; /* Відображення карток в колонку */
+    flex-direction: column;
     gap: 1rem;
   }
 
   .card {
-    max-width: 95%; /* Картки займають майже всю ширину */
+    max-width: 95%;
     height: auto;
   }
 
   .card img {
-    height: auto; /* Зображення адаптуються пропорційно */
-    max-height: 150px; /* Обмеження висоти зображень */
+    height: auto;
+    max-height: 150px;
   }
 
   .card h3 {
-    font-size: 1.2rem; /* Заголовок товару */
+    font-size: 1.2rem;
   }
 
   .card p {
-    font-size: 1rem; /* Зменшений розмір тексту */
+    font-size: 1rem;
   }
 
   .card p:last-of-type {
-    font-size: 1.2rem; /* Зменшений розмір ціни */
+    font-size: 1.2rem;
   }
 
   /* Секція "Чому обирають нас" */
@@ -1190,39 +1198,39 @@ section {
   }
 
   .benefit {
-    max-width: 95%; /* Займають майже всю ширину */
+    max-width: 95%;
   }
 
   .benefit img {
-    max-height: 150px; /* Обмеження висоти зображення */
+    max-height: 150px;
   }
 
   .benefit h3 {
-    font-size: 1.2rem; /* Зменшення тексту заголовка */
+    font-size: 1.2rem;
   }
 
   .benefit p {
-    font-size: 1rem; /* Зменшення тексту опису */
+    font-size: 1rem;
   }
 
   /* Відгуки */
   .testimonials h2 {
-    font-size: 1.5rem; /* Заголовок секції */
+    font-size: 1.5rem;
   }
 
   .testimonial-card p {
-    font-size: 0.9rem; /* Зменшений текст відгуків */
+    font-size: 0.9rem;
   }
 
   .testimonial-card cite {
-    font-size: 0.8rem; /* Зменшений текст автора */
+    font-size: 0.8rem;
   }
 
   /* Кнопки */
   .order-btn,
   .btn-buy {
-    font-size: 1rem; /* Зменшення розміру тексту кнопок */
-    padding: 0.5rem 1rem; /* Менші відступи */
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
 
   /* Футер */
@@ -1231,60 +1239,60 @@ section {
   }
 
   .footer p {
-    font-size: 0.8rem; /* Зменшений текст у футері */
+    font-size: 0.8rem;
   }
 
   .description-content {
-    flex-direction: column; /* Елементи стають вертикально */
-    gap: 1rem; /* Відстань між текстом і зображеннями */
-    padding: 1rem; /* Зменшуємо загальні відступи */
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
   }
 
   .description-content .text {
-    padding: 0.5rem; /* Зменшений внутрішній відступ */
-    text-align: center; /* Центруємо текст */
+    padding: 0.5rem;
+    text-align: center;
   }
 
   .description-content h2 {
-    font-size: 1.4rem; /* Зменшення заголовка */
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
   }
 
   .description-content p {
-    font-size: 0.8rem; /* Зменшення тексту */
-    line-height: 1.3; /* Щільніше розташування рядків */
+    font-size: 0.8rem;
+    line-height: 1.3;
     margin-bottom: 1rem;
   }
 
   .description-content ul {
     margin-bottom: 1rem;
     padding: 0;
-    list-style-position: inside; /* Список всередині текстового блоку */
+    list-style-position: inside;
   }
 
   .description-content ul li {
-    font-size: 0.8rem; /* Зменшення тексту пунктів списку */
+    font-size: 0.8rem;
     margin-bottom: 0.5rem;
   }
 
   .description-content ul li strong {
-    color: #f4a261; /* Виділення ключових слів */
+    color: #f4a261;
   }
 
   .description-content .btn-buy {
-    font-size: 0.9rem; /* Зменшення розміру кнопки */
-    padding: 0.4rem 0.8rem; /* Менші відступи */
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .photo-grid .container {
-    grid-template-columns: repeat(1, 1fr); /* Один стовпець для зображень */
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
   }
 
   .photo-grid .photo img {
-    max-width: 100%; /* Зображення адаптуються до ширини */
-    height: auto; /* Пропорційне масштабування */
-    border-radius: 8px; /* Менші округлені краї */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тонший тіньовий ефект */
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 }
