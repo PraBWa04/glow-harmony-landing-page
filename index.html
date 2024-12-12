@@ -282,10 +282,23 @@
               Новорічна ялинка в колбі (22см) - 599 грн
             </option>
           </select>
-          <input type="text" name="name" placeholder="Ваше ім'я" required />
-          <input type="tel" name="phone" placeholder="Ваш телефон" required />
+          <input
+            type="text"
+            name="name"
+            placeholder="Ваше ім'я"
+            required
+            autocomplete="name"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Ваш телефон"
+            required
+            autocomplete="tel"
+          />
           <button type="submit">Замовити зі знижкою</button>
         </form>
+
         <p id="status-message" style="display: none; font-size: 1.2rem"></p>
       </div>
     </section>
