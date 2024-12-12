@@ -212,11 +212,12 @@ section {
 
 .hero {
   display: flex;
-  justify-content: center; /* Центруємо текст */
-  align-items: center; /* Центруємо текст вертикально */
-  height: 100vh; /* Висота секції 100% від висоти вікна */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   background: url("../assets/images/background.jpg") center / cover no-repeat;
   position: relative;
+  filter: brightness(1.5);
 }
 
 .hero-text h1 {

@@ -123,13 +123,7 @@
 
     <section class="order-button-section">
       <div class="container">
-        <a
-          href="https://t.me/igor_dutchak?start=Мене%20зацікавив%20ваш%20товар."
-          target="_blank"
-          class="order-btn"
-        >
-          Замовити
-        </a>
+        <a href="#order-form" class="order-btn">Замовити</a>
       </div>
     </section>
 
@@ -167,7 +161,11 @@
                 USB (входить у комплект).
               </li>
             </ul>
-            <button class="btn-buy">Замовити зараз</button>
+            <button class="btn-buy">
+              <a href="#order-form" style="text-decoration: none; color: white">
+                Замовити зараз
+              </a>
+            </button>
           </div>
           <section class="photo-grid">
             <div class="container">
@@ -267,33 +265,27 @@
       </div>
     </section>
 
-    <section class="contact-form">
+    <!-- Додаємо id до форми -->
+    <section class="contact-form" id="order-form">
       <div class="container">
-        <!-- Додаємо фото перед формою -->
         <img
           src="assets/images/instrukcja.jpg"
           alt="Інструкція з замовлення"
           class="form-image"
         />
-        <div class="container">
-          <!-- Додаємо фото перед формою -->
-          <img
-            src="assets/images/lamp-11.jpg"
-            alt="Інструкція з замовлення"
-            class="form-image"
-          />
         <form id="telegram-form">
           <select name="lamp" required>
             <option value="" disabled selected>Обрати ліхтарик</option>
             <option value="Lamp 1">Музичний ліхтар із Сантою - 1499 грн</option>
             <option value="Lamp 2">Новорічні ліхтарики (22см) - 549 грн</option>
-            <option value="Lamp 3">Новорічна ялинка в колбі (22см) - 599 грн</option>
+            <option value="Lamp 3">
+              Новорічна ялинка в колбі (22см) - 599 грн
+            </option>
           </select>
           <input type="text" name="name" placeholder="Ваше ім'я" required />
           <input type="tel" name="phone" placeholder="Ваш телефон" required />
           <button type="submit">Замовити зі знижкою</button>
         </form>
-        <!-- Повідомлення про статус -->
         <p id="status-message" style="display: none; font-size: 1.2rem"></p>
       </div>
     </section>
