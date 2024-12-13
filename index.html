@@ -78,8 +78,8 @@
         .addEventListener("submit", async function (event) {
           event.preventDefault(); // Запобігаємо стандартному відправленню форми
 
-          const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM"; // Ваш токен Telegram бота
-          const chatId = "7478731358"; // Ваш Chat ID
+          const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM";
+          const chatId = "7478731358";
 
           // Отримуємо значення з форми
           const lamp = event.target.lamp.value;
@@ -106,7 +106,7 @@
               body: JSON.stringify({
                 chat_id: chatId,
                 text: message,
-                parse_mode: "Markdown", // Додаємо стиль для форматування повідомлення
+                parse_mode: "Markdown",
               }),
             });
 
@@ -119,14 +119,14 @@
 
               // Відображаємо повідомлення про успіх
               statusMessage.textContent = "Ваше замовлення успішно надіслано!";
-              statusMessage.style.color = "green"; // Зелений колір для успіху
-              statusMessage.style.display = "block"; // Показуємо повідомлення
-              event.target.reset(); // Очищення форми
+              statusMessage.style.color = "green";
+              statusMessage.style.display = "block";
+              event.target.reset();
             } else {
               // Відображаємо повідомлення про помилку
               statusMessage.textContent =
                 "Сталася помилка при надсиланні. Спробуйте ще раз.";
-              statusMessage.style.color = "red"; // Червоний колір для помилки
+              statusMessage.style.color = "red";
               statusMessage.style.display = "block";
             }
           } catch (error) {
