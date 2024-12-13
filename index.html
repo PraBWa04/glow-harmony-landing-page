@@ -44,17 +44,100 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js"
       );
+
+      // Initialize the Pixel with your ID
       fbq("init", "935008405241007");
+
+      // Track a PageView event
       fbq("track", "PageView");
     </script>
-    <noscript
-      ><img
+    <noscript>
+      <img
         height="1"
         width="1"
         style="display: none"
         src="https://www.facebook.com/tr?id=935008405241007&ev=PageView&noscript=1"
-    /></noscript>
+      />
+    </noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- Additional Event Tracking -->
+    <script>
+      // Track AddToCart Event on "Замовити зараз" button click
+      document.querySelector(".btn-buy").addEventListener("click", function () {
+        fbq("track", "AddToCart", {
+          content_name: "Музичний ліхтар із Сантою",
+          value: 1499,
+          currency: "UAH",
+        });
+      });
+
+      // Track CompleteRegistration Event on successful form submission
+      document
+        .getElementById("telegram-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault(); // Запобігаємо стандартному відправленню форми
+
+          const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM"; // Ваш токен Telegram бота
+          const chatId = "7478731358"; // Ваш Chat ID
+
+          // Отримуємо значення з форми
+          const lamp = event.target.lamp.value;
+          const name = event.target.name.value;
+          const phone = event.target.phone.value;
+
+          // Формуємо повідомлення для Telegram
+          const message = `🔔 *Новий заказ!*
+
+💡 *Обраний ліхтарик:* ${lamp}
+👤 *Ім'я клієнта:* ${name}
+📞 *Телефон:* ${phone}`;
+
+          // URL для відправки повідомлення через Telegram API
+          const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+          // Отримуємо елементи для повідомлення
+          const statusMessage = document.getElementById("status-message");
+
+          try {
+            const response = await fetch(url, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+                parse_mode: "Markdown", // Додаємо стиль для форматування повідомлення
+              }),
+            });
+
+            if (response.ok) {
+              // Додаємо подію CompleteRegistration
+              fbq("track", "CompleteRegistration", {
+                content_name: "Реєстрація замовлення",
+                status: "успішно",
+              });
+
+              // Відображаємо повідомлення про успіх
+              statusMessage.textContent = "Ваше замовлення успішно надіслано!";
+              statusMessage.style.color = "green"; // Зелений колір для успіху
+              statusMessage.style.display = "block"; // Показуємо повідомлення
+              event.target.reset(); // Очищення форми
+            } else {
+              // Відображаємо повідомлення про помилку
+              statusMessage.textContent =
+                "Сталася помилка при надсиланні. Спробуйте ще раз.";
+              statusMessage.style.color = "red"; // Червоний колір для помилки
+              statusMessage.style.display = "block";
+            }
+          } catch (error) {
+            // Відображаємо повідомлення про помилку підключення
+            statusMessage.textContent =
+              "Помилка з'єднання. Перевірте інтернет.";
+            statusMessage.style.color = "red";
+            statusMessage.style.display = "block";
+          }
+        });
+    </script>
   </head>
   <body>
     <!-- Навігаційна панель -->
