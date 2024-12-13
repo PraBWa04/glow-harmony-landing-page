@@ -10,8 +10,6 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 
-// Застосування Observer до всіх елементів, які потрібно анімувати
-// Вибір елементів
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 
@@ -58,10 +56,10 @@ const swiper = new Swiper(".swiper", {
 document
   .getElementById("telegram-form")
   .addEventListener("submit", async (event) => {
-    event.preventDefault(); // Зупиняємо стандартну поведінку форми
+    event.preventDefault();
 
-    const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM"; // Ваш токен Telegram бота
-    const chatId = "7478731358"; // Ваш Chat ID
+    const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM";
+    const chatId = "7478731358";
 
     // Отримуємо значення з форми
     const lamp = event.target.lamp.value;
@@ -84,21 +82,21 @@ document
         body: JSON.stringify({
           chat_id: chatId,
           text: message,
-          parse_mode: "Markdown", // Додаємо стиль для форматування повідомлення
+          parse_mode: "Markdown",
         }),
       });
 
       if (response.ok) {
         // Відображаємо повідомлення про успіх
         statusMessage.textContent = "Ваше замовлення успішно надіслано!";
-        statusMessage.style.color = "green"; // Зелений колір для успіху
-        statusMessage.style.display = "block"; // Показуємо повідомлення
-        event.target.reset(); // Очищення форми
+        statusMessage.style.color = "green";
+        statusMessage.style.display = "block";
+        event.target.reset();
       } else {
         // Відображаємо повідомлення про помилку
         statusMessage.textContent =
           "Сталася помилка при надсиланні. Спробуйте ще раз.";
-        statusMessage.style.color = "red"; // Червоний колір для помилки
+        statusMessage.style.color = "red";
         statusMessage.style.display = "block";
       }
     } catch (error) {
@@ -108,3 +106,19 @@ document
       statusMessage.style.display = "block";
     }
   });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const buyButton = document.querySelector(".btn-buy");
+  if (buyButton) {
+    buyButton.addEventListener("click", function () {
+      window.location.href = "#order-form";
+      fbq("track", "AddToCart", {
+        content_name: "Музичний ліхтар із Сантою",
+        value: 1499,
+        currency: "UAH",
+      });
+    });
+  } else {
+    console.error("Кнопка з класом .btn-buy не знайдена");
+  }
+});

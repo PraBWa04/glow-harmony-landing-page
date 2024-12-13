@@ -64,79 +64,82 @@
     <!-- Additional Event Tracking -->
     <script>
       // Track AddToCart Event on "Замовити зараз" button click
-      document.querySelector(".btn-buy").addEventListener("click", function () {
-        fbq("track", "AddToCart", {
-          content_name: "Музичний ліхтар із Сантою",
-          value: 1499,
-          currency: "UAH",
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        const buyButton = document.querySelector(".btn-buy");
+        if (buyButton) {
+          buyButton.addEventListener("click", function () {
+            fbq("track", "AddToCart", {
+              content_name: "Музичний ліхтар із Сантою",
+              value: 1499,
+              currency: "UAH",
+            });
+          });
+        } else {
+          console.error("Кнопка з класом .btn-buy не знайдена");
+        }
       });
 
       // Track CompleteRegistration Event on successful form submission
-      document
-        .getElementById("telegram-form")
-        .addEventListener("submit", async function (event) {
-          event.preventDefault(); // Запобігаємо стандартному відправленню форми
+      document.addEventListener("DOMContentLoaded", function () {
+        const telegramForm = document.getElementById("telegram-form");
+        if (telegramForm) {
+          telegramForm.addEventListener("submit", async function (event) {
+            event.preventDefault(); // Запобігаємо стандартному відправленню форми
 
-          const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM";
-          const chatId = "7478731358";
+            const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM";
+            const chatId = "7478731358";
 
-          // Отримуємо значення з форми
-          const lamp = event.target.lamp.value;
-          const name = event.target.name.value;
-          const phone = event.target.phone.value;
+            // Отримуємо значення з форми
+            const lamp = event.target.lamp.value;
+            const name = event.target.name.value;
+            const phone = event.target.phone.value;
 
-          // Формуємо повідомлення для Telegram
-          const message = `🔔 *Новий заказ!*
+            // Формуємо повідомлення для Telegram
+            const message = `🔔 *Новий заказ!*\n\n💡 *Обраний ліхтарик:* ${lamp}\n👤 *Ім'я клієнта:* ${name}\n📞 *Телефон:* ${phone}`;
 
-💡 *Обраний ліхтарик:* ${lamp}
-👤 *Ім'я клієнта:* ${name}
-📞 *Телефон:* ${phone}`;
+            // URL для відправки повідомлення через Telegram API
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-          // URL для відправки повідомлення через Telegram API
-          const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            // Отримуємо елементи для повідомлення
+            const statusMessage = document.getElementById("status-message");
 
-          // Отримуємо елементи для повідомлення
-          const statusMessage = document.getElementById("status-message");
-
-          try {
-            const response = await fetch(url, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                chat_id: chatId,
-                text: message,
-                parse_mode: "Markdown",
-              }),
-            });
-
-            if (response.ok) {
-              // Додаємо подію CompleteRegistration
-              fbq("track", "CompleteRegistration", {
-                content_name: "Реєстрація замовлення",
-                status: "успішно",
+            try {
+              const response = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  chat_id: chatId,
+                  text: message,
+                  parse_mode: "Markdown",
+                }),
               });
 
-              // Відображаємо повідомлення про успіх
-              statusMessage.textContent = "Ваше замовлення успішно надіслано!";
-              statusMessage.style.color = "green";
-              statusMessage.style.display = "block";
-              event.target.reset();
-            } else {
-              // Відображаємо повідомлення про помилку
+              if (response.ok) {
+                // Відображаємо повідомлення про успіх
+                statusMessage.textContent =
+                  "Ваше замовлення успішно надіслано!";
+                statusMessage.style.color = "green";
+                statusMessage.style.display = "block";
+                event.target.reset();
+              } else {
+                // Відображаємо повідомлення про помилку
+                statusMessage.textContent =
+                  "Сталася помилка при надсиланні. Спробуйте ще раз.";
+                statusMessage.style.color = "red";
+                statusMessage.style.display = "block";
+              }
+            } catch (error) {
+              // Відображаємо повідомлення про помилку підключення
               statusMessage.textContent =
-                "Сталася помилка при надсиланні. Спробуйте ще раз.";
+                "Помилка з'єднання. Перевірте інтернет.";
               statusMessage.style.color = "red";
               statusMessage.style.display = "block";
             }
-          } catch (error) {
-            // Відображаємо повідомлення про помилку підключення
-            statusMessage.textContent =
-              "Помилка з'єднання. Перевірте інтернет.";
-            statusMessage.style.color = "red";
-            statusMessage.style.display = "block";
-          }
-        });
+          });
+        } else {
+          console.error("Форма з id 'telegram-form' не знайдена.");
+        }
+      });
     </script>
   </head>
   <body>
@@ -244,11 +247,7 @@
                 USB (входить у комплект).
               </li>
             </ul>
-            <button class="btn-buy">
-              <a href="#order-form" style="text-decoration: none; color: white">
-                Замовити зараз
-              </a>
-            </button>
+            <button class="btn-buy">Замовити зараз</button>
           </div>
           <section class="photo-grid">
             <div class="container">
