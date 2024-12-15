@@ -84,7 +84,7 @@
         const telegramForm = document.getElementById("telegram-form");
         if (telegramForm) {
           telegramForm.addEventListener("submit", async function (event) {
-            event.preventDefault(); // Запобігаємо стандартному відправленню форми
+            event.preventDefault();
 
             const botToken = "7802344196:AAFAUEzWx1yB6CUbX7doOguFMAWJBIbSheM";
             const chatId = "7478731358";
@@ -121,6 +121,13 @@
                 statusMessage.style.color = "green";
                 statusMessage.style.display = "block";
                 event.target.reset();
+
+                // Відстежуємо подію CompleteRegistration у Facebook Pixel
+                fbq("track", "CompleteRegistration", {
+                  content_name: lamp,
+                  customer_name: name,
+                  customer_phone: phone,
+                });
               } else {
                 // Відображаємо повідомлення про помилку
                 statusMessage.textContent =
@@ -139,6 +146,22 @@
         } else {
           console.error("Форма з id 'telegram-form' не знайдена.");
         }
+      });
+
+      // Track Contact Event on interaction with phone or email
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactLinks = document.querySelectorAll(
+          "a[href^='tel:'], a[href^='mailto:']"
+        );
+        contactLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            fbq("track", "Contact", {
+              method: "Click",
+              contact_type: link.href.startsWith("tel:") ? "Phone" : "Email",
+              contact_value: link.href,
+            });
+          });
+        });
       });
     </script>
   </head>
@@ -192,10 +215,10 @@
             <p style="color: red">1499₴</p>
           </div>
           <div class="card">
-            <img src="assets/images/lamp-4.jpg" alt="Лампа 2" />
-            <h3>Новорічні ліхтарики (22см)</h3>
-            <p><s>1099₴</s></p>
-            <p style="color: red">549₴</p>
+            <img src="assets/images/lamp-12.jpg" alt="Лампа 2" />
+            <h3>Фігурка Санта в довгій шапці (85см)</h3>
+            <p><s>2599₴</s></p>
+            <p style="color: red">1299₴</p>
           </div>
           <div class="card">
             <img src="assets/images/lamp-9.jpg" alt="Лампа 3" />
@@ -332,12 +355,6 @@
             <div class="swiper-slide testimonial-card">
               <img src="assets/images/photo3.jpg" alt="Фото 3" />
             </div>
-            <div class="swiper-slide testimonial-card">
-              <img src="assets/images/photo4.jpg" alt="Фото 4" />
-            </div>
-            <div class="swiper-slide testimonial-card">
-              <img src="assets/images/photo5.jpg" alt="Фото 5" />
-            </div>
           </div>
           <!-- Навігація -->
           <div class="swiper-button-next"></div>
@@ -359,7 +376,9 @@
           <select name="lamp" required>
             <option value="" disabled selected>Обрати ліхтарик</option>
             <option value="Lamp 1">Музичний ліхтар із Сантою - 1499 грн</option>
-            <option value="Lamp 2">Новорічні ліхтарики (22см) - 549 грн</option>
+            <option value="Lamp 2">
+              Фігурка Санта в довгій шапці (85см) - 1299 грн
+            </option>
             <option value="Lamp 3">
               Новорічна ялинка в колбі (22см) - 599 грн
             </option>
